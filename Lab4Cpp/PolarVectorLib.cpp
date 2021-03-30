@@ -29,7 +29,7 @@ PolarVector::PolarVector(const PolarVector& copyFrom)        // конструктор копи
 {
     _length = copyFrom._length;
     _angle = copyFrom._angle;
-    _errorFlag = false;
+    _errorFlag = copyFrom._errorFlag;
 }
 
 void PolarVector::TurnVector(double angle)            // повернуть вектор

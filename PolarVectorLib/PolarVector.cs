@@ -36,7 +36,7 @@ namespace PolarVectorLib
         {
             _length = copyFrom._length;
             _angle = copyFrom._angle;
-            ErrorFlag = false;
+            ErrorFlag = copyFrom.ErrorFlag;
         }
         public void TurnVector(double angle)            // повернуть вектор
         {
