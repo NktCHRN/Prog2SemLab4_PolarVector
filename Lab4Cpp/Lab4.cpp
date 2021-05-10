@@ -73,5 +73,6 @@ int main()
         cerr << e.what() << endl;
     }
     cout << endl;
+    delete Z2;
     system("pause");
 }
