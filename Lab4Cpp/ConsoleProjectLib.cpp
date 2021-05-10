@@ -9,11 +9,7 @@ void ProgramInfo()							            //информация о программе
     cout << "Variant 15" << endl;
 }
 
-void FormattedPrint(PolarVector vector, const char *name, bool showErrorFlag) 
+void FormattedPrint(PolarVector vector, const char *name) 
 {
-    if (showErrorFlag)
-        cout << "Vector " << name << ". Length: " << fixed << vector.GetLength() << 
-        ". Polar angle: " << fixed << vector.GetAngle() << " degrees. ErrorFlag is " << ((vector.GetErrorFlag()) ? "true" : "false") << endl;
-    else
-        cout << "Vector " << name << ". Length: " << fixed << vector.GetLength() << ". Polar angle: " << fixed << vector.GetAngle() << " degrees." << endl;
+    cout << "Vector " << name << ". Length: " << fixed << vector.GetLength() << ". Polar angle: " << fixed << vector.GetAngle() << " degrees." << endl;
 }

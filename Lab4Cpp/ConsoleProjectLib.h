@@ -3,4 +3,4 @@
 #include "PolarVectorLib.h"
 
 void ProgramInfo();																		//информация о программе
-void FormattedPrint(PolarVector vector, const char* name, bool showErrorFlag = false); // форматированный вывод данных вектора
+void FormattedPrint(PolarVector vector, const char* name); // форматированный вывод данных вектора

@@ -10,24 +10,21 @@ namespace PolarVectorLib
     {
         private double _length;                         // длина вектора
         private double _angle;                          // полярный угол в градусах
-        public bool ErrorFlag { get; private set; }     // показывает, не возникло ли ошибок в последней операции
         public PolarVector()                            // конструктор по умолчанию
         {
             _length = 0;
             _angle = 0;
-            ErrorFlag = false;
         }
         public PolarVector(double length, double angle) // конструктор с параметрами
         {
             if (length >= 0)
             {
                 _length = length;
-                ErrorFlag = false;
             }
             else
             {
                 _length = 0;
-                ErrorFlag = true;                       // ошибка - длина не может быть отрицательной
+                throw new ArgumentException("Length can`t be negative", nameof(length));                       // ошибка - длина не может быть отрицательной
             }
             _angle = angle;
             DelFullSpins();
@@ -36,13 +33,11 @@ namespace PolarVectorLib
         {
             _length = copyFrom._length;
             _angle = copyFrom._angle;
-            ErrorFlag = copyFrom.ErrorFlag;
         }
         public void TurnVector(double angle)            // повернуть вектор
         {
             _angle += angle;
             DelFullSpins();
-            ErrorFlag = false;
         }
         public double GetLength() => _length;
         public double GetAngle() => _angle;
@@ -72,7 +67,7 @@ namespace PolarVectorLib
             else
             {
                 resultVector._angle = 0;
-                resultVector.ErrorFlag = true;                                                      // ошибка - деление на ноль
+                throw new DivideByZeroException("Length of the result vector was 0. Can`t calculate the result because of division by zero");                                                      // ошибка - деление на ноль
             }
             return resultVector;
         }

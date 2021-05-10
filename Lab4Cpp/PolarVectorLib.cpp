@@ -6,7 +6,6 @@ PolarVector::PolarVector()                            // конструктор по умолчани
 {
     _length = 0;
     _angle = 0;
-    _errorFlag = false;
 }
 
 PolarVector::PolarVector(double length, double angle) // конструктор с параметрами
@@ -14,12 +13,11 @@ PolarVector::PolarVector(double length, double angle) // конструктор с параметра
     if (length >= 0)
     {
         _length = length;
-        _errorFlag = false;
     }
     else
     {
         _length = 0;
-        _errorFlag = true;                       // ошибка - длина не может быть отрицательной
+        throw invalid_argument("Length can`t be negative");                       // ошибка - длина не может быть отрицательной
     }
     _angle = angle;
     DelFullSpins();
@@ -29,14 +27,12 @@ PolarVector::PolarVector(const PolarVector& copyFrom)        // конструктор копи
 {
     _length = copyFrom._length;
     _angle = copyFrom._angle;
-    _errorFlag = copyFrom._errorFlag;
 }
 
 void PolarVector::TurnVector(double angle)            // повернуть вектор
 {
     _angle += angle;
     DelFullSpins();
-    _errorFlag = false;
 }
 
 double PolarVector::GetLength() {
@@ -45,10 +41,6 @@ double PolarVector::GetLength() {
 
 double PolarVector::GetAngle() {
     return _angle;
-}
-
-bool PolarVector::GetErrorFlag() {
-    return _errorFlag;
 }
 
 PolarVector PolarVector::operator *(double factor) {	    // перегрузка оператора * - умножение вектора на число
@@ -81,7 +73,7 @@ PolarVector PolarVector::operator +(const PolarVector & rightVector) { // перегр
     else
     {
         resultVector._angle = 0;
-        resultVector._errorFlag = true;                                                      // ошибка - деление на ноль
+        throw runtime_error("Length of the result vector was 0. Can`t calculate the result because of division by zero");               // ошибка - деление на ноль
     }
     return resultVector;
 }

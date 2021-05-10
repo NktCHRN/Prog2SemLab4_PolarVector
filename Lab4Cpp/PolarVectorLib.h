@@ -1,12 +1,13 @@
 #pragma once
 #define _USE_MATH_DEFINES
 #include <cmath>
+#include <exception>
+#include <stdexcept>
 
 class PolarVector {
 private:
 	double _length;														// длина вектора
 	double _angle;														// полярный угол в градусах
-	bool _errorFlag;													// показывает, не возникло ли ошибок в последней операции
 	void DelFullSpins();												// приводит полярный угол к виду 0;2pi
 public:
     PolarVector();														// конструктор по умолчанию
@@ -15,7 +16,6 @@ public:
     void TurnVector(double angle);										// повернуть вектор
     double GetLength();
     double GetAngle();
-	bool GetErrorFlag();
     PolarVector operator *(double factor);								// перегрузка оператора * - умножение вектора на число
 	PolarVector & operator *=(double factor);							// перегрузка оператора *=
     PolarVector operator +(const PolarVector & rightVector);					// перегрузка оператора + векторное сложение
