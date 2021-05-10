@@ -24,7 +24,7 @@ namespace PolarVectorLib
             else
             {
                 _length = 0;
-                throw new ArgumentException("Length can`t be negative", nameof(length));                       // ошибка - длина не может быть отрицательной
+                throw new ArgumentOutOfRangeException(nameof(length), "Length can`t be negative");                       // ошибка - длина не может быть отрицательной
             }
             _angle = angle;
             DelFullSpins();
